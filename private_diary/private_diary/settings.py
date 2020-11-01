@@ -9,9 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4%tct7*h=@zs2dgf)pyf-9zp@4#knr6ao0b9e4uwt+xo93#%tn'
+SECRET_KEY = '-pqj!zkm4!t3yrclp8vn%i7=weu2g%hv8!#k*vd3an#opqqipb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,11 +77,11 @@ WSGI_APPLICATION = 'private_diary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'private_diary',
-        'USER': os.environ.get('DB_USER'),
+        'NANE':'private_diary',
+        'USER':os.environ.get('DB_USER'),
         'PASSWORD':os.environ.get('DB_PASSWORD'),
-        'HOST':'localhost',
-        'POST':'5432',
+        'HOST':'',
+        'POST':'',
     }
 }
 
@@ -125,38 +124,36 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# ロギング設定
 LOGGING = {
-    'version': 1, #固定
-    'disable_existing_loggers': False,
+    'version': 1,#固定
+    'disable_existing_loggers':False,
 
-    # ロガーの設定
+    #ロガー設定
     'loggers': {
-        # Djangoの利用するロガー
+        #Djangoが使用するロガー
         'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
+            'handlers':['console'],
+            'level':'INFO',
         },
-        # diaryApplyが利用するロガー
+        #diaryアプリが使用するロガー
         'diary': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
+            'handlers':['console'],
+            'level':'DEBUG',
+        }
     },
-
-    # ハンドラの設定
+    #ハンドラの設定
     'handlers': {
         'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'dev'
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter':'dev'
         },
     },
 
-    # フォーマッタの設定
+    #フォーマッタの設定
     'formatters': {
         'dev': {
-            'format': '\t'.join([
+            'format':'\t'.join([
                 '%(asctime)s',
                 '[%(levelname)s]',
                 '%(pathname)s(Line:%(lineno)d)',
