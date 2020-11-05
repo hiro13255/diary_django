@@ -1,7 +1,7 @@
 from .settings_common import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # 本番ではセキュリティの観点でFalseにする必要あり
 
 ALLOWED_HOSTS = []
 
@@ -43,3 +43,5 @@ LOGGING = {
         },
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
