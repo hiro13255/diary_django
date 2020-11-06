@@ -10,11 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dotenv_path=join(dirname(__file__),'.env')
+load_dotenv(dotenv_path)
 
 
 # Quick-start development settings - unsuitable for production
@@ -22,9 +26,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-pqj!zkm4!t3yrclp8vn%i7=weu2g%hv8!#k*vd3an#opqqipb'
-
-
-
 
 # Application definition
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'diary.apps.DiaryConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -72,14 +74,15 @@ WSGI_APPLICATION = 'private_diary.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# データベース設定
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NANE':'private_diary',
-        'USER':os.environ.get('DB_USER'),
-        'PASSWORD':os.environ.get('DB_PASSWORD'),
-        'HOST':'',
-        'POST':'',
+        'NAME': 'private_diary',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -133,3 +136,4 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
 }
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
