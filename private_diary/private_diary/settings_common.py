@@ -64,7 +64,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 # ログイン/ログアウト後の遷移先を設定
 LOGIN_REDIRECT_URL = 'diary:index'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'account_log'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 # ログアウトリンクのクリックでログアウトする設定
 ACCOUNT_LOGOUT_ON_GET = True
