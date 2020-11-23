@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+
+    'django_ses',
 ]
 # 認証用ID
 SITE_ID = 1
@@ -169,3 +171,7 @@ MESSAGE_TAGS = {
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MEDIA_URL = '/media/'
+
+#バックアップバッチ用
+BACKUP_PATH = 'backup/'
+NUM_SAVED_BACKUP = 30
