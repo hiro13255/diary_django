@@ -11,14 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from os.path import join, dirname
-from dotenv import load_dotenv
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-dotenv_path=join(dirname(__file__),'.env')
-load_dotenv(dotenv_path)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -113,7 +111,7 @@ DATABASES = {
         'NAME': 'private_diary',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
