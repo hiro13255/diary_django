@@ -1,7 +1,7 @@
 from .settings_common import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # 本番ではセキュリティの観点でFalseにする必要あり
+DEBUG = False # 本番ではセキュリティの観点でFalseにする必要あり
 
 ALLOWED_HOSTS = []
 
@@ -47,3 +47,6 @@ LOGGING = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)

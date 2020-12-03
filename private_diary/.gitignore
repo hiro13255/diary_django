@@ -1,0 +1,4 @@
+*.pyc
+__pycache__
+settings_common_2.py
+settings_dev_2.py
